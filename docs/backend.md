@@ -1,5 +1,5 @@
 ## Go 実行
-go run main.go
+go run .
 
 ## React 実行
 npm run dev

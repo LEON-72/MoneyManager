@@ -31,20 +31,27 @@ export function ExpenseForm({ onAdd }: Props) {
     };
 
     return (
-        <div className="item-add">
+        <div className="flex flex-col md:flex-row gap-4">
             <input
+            className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
                 placeholder="品名"
                 value={name}
                 onChange={e => setName(e.target.value)}
             />
             <input 
+                className="w-full md:w-32 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transition-all"
                 placeholder="金額"
                 type="number"
                 value={amount}
                 onChange={e => setAmount(e.target.value)}
                 onKeyDown={(e) => {if (e.key === 'Enter') handleSubmit();}} // Enterで実行
             />
-            <button onClick={handleSubmit}>追加</button>
+            <button 
+                onClick={handleSubmit}
+                className="bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 active:scale-95 transition-all shadow-md"
+            >
+                追加
+            </button>
         </div>
     );
 }
