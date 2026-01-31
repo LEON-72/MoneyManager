@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 
 interface Item {
+  id: number;
   name: string;
   amount: number;
 }
@@ -27,6 +28,13 @@ function App() {
     loadData();
   }, []);
 
+  const deleteItem = async (id: number) => {
+    if (!window.confirm("本当に削除しますか？")) return;
+
+    await fetch(`http://localhost:8080/delete?id=${id}`);
+    fetchItems(); // 削除後にリストを再読み込み
+  };
+
   const total = items.reduce((sum, item) => sum + item.amount, 0);
 
   return (
@@ -48,9 +56,15 @@ function App() {
 
       <h2>一覧</h2>
       <ul>
-        {items.map((item, index) => (
-          <li key={index}>
+        {items.map((item) => (
+          <li key={item.id} style={{ marginBottom: `10px`, borderBottom: `1px solid #eee` }}>
             {item.name || "無名"} : {item.amount.toLocaleString()}円
+            <button
+              onClick={() => deleteItem(item.id)}
+              style={{ marginLeft: `10px`, color: `red`, cursor: `pointer` }}
+            >
+              削除
+            </button>
           </li>
         ))}
       </ul>
