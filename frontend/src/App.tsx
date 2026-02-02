@@ -76,8 +76,7 @@ function App() {
                     <h2 className="text-lg font-bold text-slate-700">最近の履歴</h2>
                     <button 
                         onClick={fetchItems}
-                        className="text-indigo-600 text-sm font-semibold hover:text-indigo-800"
-                    >
+                        className="px-4 py-2 bg-indigo-50 text-indigo-600 text-sm font-bold rounded-lg border border-indigo-100 hover:bg-indigo-600 hover:text-white hover:shadow-md active:scale-95 transition-all">
                         更新
                     </button>
                 </div>
